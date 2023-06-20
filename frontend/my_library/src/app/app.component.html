@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Minha Biblioteca</h1>
+  <div *ngIf="!cancelButton">
+    <button id="botaoCancelar" (click)="hideForms()">Cancelar</button>
+  </div>
+  <div class="botoes">
+    <div *ngIf="!buttonClick">
+      <button class="botao" (click)="showUserForms()">CONTROLE DE USUARIOS</button>
+    </div>
+    <app-usuario *ngIf="showUserForm"></app-usuario>
+    <div *ngIf="!buttonClick">
+      <button class="botao" (click)="showBookForms()">CONTROLE DE LIVROS</button>
+    </div>
+      <app-livros *ngIf="showBookForm"></app-livros>
+    <div *ngIf="!buttonClick">
+      <button class="botao" (click)="showLoanForms()">CONTROLE DE EMPRESTIMOS</button>
+    </div>
+    <app-emprestimos *ngIf="showLoanForm"></app-emprestimos>
+  </div>
+</div>

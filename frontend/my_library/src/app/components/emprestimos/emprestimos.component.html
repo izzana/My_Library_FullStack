@@ -1,0 +1,55 @@
+<div class="geral">
+  <button (click)="showForms()" class="btnEmprestar">{{ !showForm ? 'Emprestar' : 'Voltar'}}</button>
+  <div class="containerform" *ngIf="showForm">
+    <form class="caixa1" (ngSubmit)="realizarEmprestimo()">
+      <div>
+        <button type="submit" class="btn-toggle-submit">{{ edit ? 'Devolver' : 'Confirmar' }}</button>
+      </div>
+      <div class="opcoes">
+        <div>
+          <select [(ngModel)]="emprestimo.id_usuario" name="usuarioId" required>
+            <option value="">Selecione um usuário</option>
+            <option *ngFor="let usuario of usuarios" [value]="usuario.id">{{ usuario.nome }}</option>
+          </select>
+        </div>
+        <div>
+          <select [(ngModel)]="emprestimo.id_livro" name="livroId" required>
+            <option value="">Selecione um livro</option>
+            <option *ngFor="let livro of livros" [value]="livro.id">{{ livro.titulo }}</option>
+          </select>
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+  <div class="containertable">
+    <div>
+      <h2 class="subTitulo">Lista de Livros Emprestados</h2>
+    </div>
+    <table class="user-table">
+      <thead class="libraryTHead">
+        <tr class="libraryTH">
+          <th>ID</th>
+          <th>Nome do Usuário</th>
+          <th>Nome do Livro</th>
+          <th>Data de Empréstimo</th>
+          <th>Data de Devolução</th>
+          <th id="acoes-td">Ações</th>
+        </tr>
+      </thead>
+      <tbody class="libraryTBody scroll-caixa">
+        <tr *ngFor="let emprestimo of emprestimos">
+          <td>{{ emprestimo.id }}</td>
+          <td>{{ emprestimo.nome_usuario}}</td>
+          <td>{{ emprestimo.nome_livro }}</td>
+          <td>{{ emprestimo.data_emprestimo}}</td>
+          <td>{{ emprestimo.data_devolucao}}</td>
+          <td>
+            <button (click)="giveBackBook(emprestimo)" class="btn-toggle">Devolver</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

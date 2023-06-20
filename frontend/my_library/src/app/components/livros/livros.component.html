@@ -1,0 +1,107 @@
+<div class="geral">
+  <button (click)="showForms()" class="btn-adicionar">{{ !showForm ? 'Adicionar' : 'Voltar'}}</button>
+
+  <div class="containerform" *ngIf="showForm">
+    <form class="caixa1" (ngSubmit)="saveBook()">
+      <div>
+        <button type="submit" class="btn-toggle-submit">{{ edit ? 'Editar' : 'Salvar' }}</button>
+      </div>
+      <div>
+        <label class="caixa1-inputs" for="titulo">Titulo</label>
+        <input class="caixa1-inputs" type="text" [(ngModel)]="livro.titulo" [ngModelOptions]="{standalone: true}" placeholder="Título" required>
+      </div>
+      <div>
+        <label class="caixa1-inputs" for="autor">Autor</label>
+        <input class="caixa1-inputs" type="text" [(ngModel)]="livro.autor" [ngModelOptions]="{standalone: true}" placeholder="Autor" required>
+      </div>
+      <div>
+        <label class="caixa1-inputs" for="ano_publicacao">Ano Publicado</label>
+        <input class="caixa1-inputs" type="number" [(ngModel)]="livro.ano_publicacao" [ngModelOptions]="{standalone: true}" placeholder="Publicação" required>
+      </div>
+      <div>
+        <label class="caixa1-inputs" for="editora">Editora</label>
+        <input class="caixa1-inputs" type="text" [(ngModel)]="livro.editora" [ngModelOptions]="{standalone: true}" placeholder="Editora" required>
+      </div>
+      <div>
+        <label class="caixa1-inputs" for="tipo_livro">Gênero</label>
+        <input class="caixa1-inputs" type="text" [(ngModel)]="livro.tipo_livro" [ngModelOptions]="{standalone: true}" placeholder="Gênero" required>
+      </div>
+      <div>
+        <select class="caixa1-inputs caixa1-select" [(ngModel)]="livro.impresso" name="impresso" id="impresso" [ngModelOptions]="{standalone: true}">
+          <option value="" disabled selected>Impresso</option>
+          <option value="1">Sim</option>
+          <option value="0">Não</option>
+        </select>
+      </div>
+      <div>
+        <select class="caixa1-inputs caixa1-select" [(ngModel)]="livro.localizacao" name="localizacao" id="localizacao" [ngModelOptions]="{standalone: true}">
+          <option value="" disabled>Localização</option>
+          <option value="Estante">Estante</option>
+          <option value="Mesa">Mesa</option>
+          <option value="Arquivo">Arquivo</option>
+          <option value="Guarda Roupa">Guarda Roupa</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div  *ngIf="showList">
+    <div class="search-bar-caixa">
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="title" placeholder="Buscar pelo título">
+      <button (click)="getBooksByTitle()" class="btn-toggle">Pesquisar</button>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="author" placeholder="Buscar pelo autor">
+      <button (click)="getBooksByAutor()" class="btn-toggle">Pesquisar</button>
+    </div>
+  </div>
+
+  <div class="containertable">
+    <div>
+      <h2 class="subTitulo">Lista de Livros</h2>
+    </div>
+    <table class="user-table">
+      <thead class="libraryTHead">
+        <tr class="libraryTH">
+          <th>Titulo</th>
+          <th>Autor</th>
+          <th>Ano Publicado</th>
+          <th>Editora</th>
+          <th>Genero</th>
+          <th>Localização</th>
+          <th>Impresso</th>
+          <th>Emprestado</th>
+          <th id="acoes-td">Ações</th>
+        </tr>
+      </thead>
+      <tbody class="libraryTBody scroll-caixa">
+        <tr *ngFor="let livro of livros">
+          <td>{{ livro.titulo }}</td>
+          <td>{{ livro.autor }}</td>
+          <td>{{ livro.ano_publicacao }}</td>
+          <td>{{ livro.editora }}</td>
+          <td>{{ livro.tipo_livro }}</td>
+          <td>{{ livro.localizacao }}</td>
+          <td>
+            <span *ngIf="livro.impresso == 1 || livro.impresso">Sim</span>
+            <span *ngIf="livro.impresso == 0 || !livro.impresso">Não</span>
+          </td>
+          <td>
+            <span *ngIf="livro.emprestado === 1">Sim</span>
+            <span *ngIf="livro.emprestado === 0">Não</span>
+          </td>
+
+          <td>
+            <button class="btn-toggle" (click)="updateBook(livro)">Editar</button>
+            <button class="btn-toggle" (click)="deleteBook(livro.id)">Excluir</button>
+            <button class="btn-toggle" (click)="getBookById(livro.id)">Id</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+
+
+</div>

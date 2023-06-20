@@ -1,0 +1,143 @@
+.geral{
+  color: white;
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.subTitulo{
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.btn-toggle-submit{
+  box-sizing: border-box;
+  width: 120px;
+  height: 40px;
+  background: #1E0202;
+  mix-blend-mode: hard-light;
+  border: 1px solid #FFFFFF;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  left: 950px;
+  right: auto;
+  top: 440px;
+  transform: translateY(-100%);
+}
+
+.caixa1{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 60vw;
+}
+
+.caixa1 div{
+
+  margin-bottom: 20px;
+}
+
+.caixa1 div input{
+  margin-left: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+
+.containerform input{
+  font-size: 1rem;
+  outline: none;
+}
+
+.user-table {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  transition: .3s;
+  font-size: 1.2rem;
+}
+
+.libraryTBody {
+  display: block;
+  overflow-y: auto;
+  width: 100%;
+  max-height: 200px;
+  scroll-behavior: smooth;
+}
+
+.libraryTHead {
+  width: 100%;
+}
+
+.libraryTH{
+  width: 100%;
+  background-color: rgba(49, 48, 47, 0.466);
+}
+
+.libraryTH th{
+  width: 8.9vw;
+  padding: 5px;
+  text-align: center;
+}
+
+.libraryTBody td {
+  border-bottom: 1px solid #fffdfd;
+  padding: 5px;
+  width: 8vw;
+  text-align: center;
+}
+
+#acoes-td {
+  text-align: center;
+}
+
+.btn-toggle{
+  box-sizing: border-box;
+  width: 60px;
+  height: 20px;
+  background: #1E0202;
+  mix-blend-mode: hard-light;
+  border: 1px solid #FFFFFF;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  margin-left: 5px;
+}
+
+.btn-salvar{
+  box-sizing: border-box;
+  width: 120px;
+  height: 40px;
+  background: #1E0202;
+  mix-blend-mode: hard-light;
+  border: 1px solid #FFFFFF;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  left: 190px;
+  right: auto;
+  top: 100px;
+  transform: translateY(-50%);
+}

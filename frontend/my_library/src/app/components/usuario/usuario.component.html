@@ -1,0 +1,68 @@
+<div class="geral">
+  <button (click)="showForms()" class="btn-salvar">{{ !showForm ? 'Criar' : 'Voltar'}}</button>
+  <div class="containerform" *ngIf="showForm" >
+
+    <form class="caixa1" (ngSubmit)="saveUser()">
+      <div>
+        <label for="nome">Nome</label>
+        <input type="text" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}" placeholder="Nome" required>
+      </div>
+      <div>
+        <label for="cpf">CPF</label>
+        <input type="text" [(ngModel)]="usuario.cpf" [ngModelOptions]="{standalone: true}" placeholder="CPF" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="text" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}" placeholder="Email" required>
+      </div>
+      <div>
+        <label id="marginzinha" for="telefone">Telefone</label>
+        <input type="text" [(ngModel)]="usuario.telefone" [ngModelOptions]="{standalone: true}" placeholder="Telefone" required>
+      </div>
+      <div>
+        <label for="login">Login</label>
+        <input type="text" [(ngModel)]="usuario.login" [ngModelOptions]="{standalone: true}" placeholder="Login" required>
+      </div>
+      <div>
+        <label for="senha">Senha</label>
+        <input type="text" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}" placeholder="Senha" required>
+      </div>
+
+      <button type="submit" class="btn-toggle-submit">{{ edit ? 'Editar' : 'Salvar' }}</button>
+    </form>
+  </div>
+  <div class="containertable" *ngIf="showList">
+    <div>
+      <h2 class="subTitulo">Lista de usuários</h2>
+    </div>
+    <table class="user-table">
+      <thead class="libraryTHead">
+        <tr class="libraryTH">
+          <th>Nome</th>
+          <th>CPF</th>
+          <th id="email">E-mail</th>
+          <th>Telefone</th>
+          <th>Login</th>
+          <th>Senha</th>
+          <th id="acoes-td">Ações</th>
+        </tr>
+      </thead>
+      <tbody class="libraryTBody scroll-caixa">
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{ usuario.nome }}</td>
+          <td  id="cpf">{{ usuario.cpf }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>{{ usuario.telefone }}</td>
+          <td>{{ usuario.login }}</td>
+          <td>{{ usuario.senha }}</td>
+            <td>
+              <button class="btn-toggle" (click)="updateUser(usuario)">Editar</button>
+              <button class="btn-toggle" (click)="getUserById(usuario.id)">ID</button>
+              <button class="btn-toggle" (click)="deleteUser(usuario.id)">Excluir</button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
